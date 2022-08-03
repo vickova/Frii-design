@@ -9,7 +9,6 @@ const Login = () => {
         <div className='signup-cover'>
             <h2>Time to vote your favourite Techie, let's make this amazing!</h2>
             <h3>Create an Account</h3>
-            <p>Have an account? <span><Link to='/signup'>Log in</Link></span></p>
             <form>
             <Link to='/'>
                 <button>

@@ -3,6 +3,7 @@ import Square from '../img/squares.png';
 import Arrow from '../img/arrow.svg';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 import Searching from '../components/Searching';
 
 
@@ -74,6 +75,7 @@ const VotingCategories = ({votings, search, setSearch}) => {
                 )
             })}
         </div>
+        <Footer/>
     </VotingStyle>
   )
 }

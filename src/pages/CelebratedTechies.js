@@ -1,5 +1,6 @@
 import React from 'react';
 import Face from '../img/face.png';
+import Footer from '../components/Footer';
 import styled from 'styled-components';
 
 const CelebratedTechies = () => {
@@ -54,6 +55,7 @@ const CelebratedTechies = () => {
                 })}
             </div>
         </div>
+        <Footer/>
     </CelebratedStyle>
   )
 }

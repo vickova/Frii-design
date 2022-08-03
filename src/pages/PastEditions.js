@@ -4,10 +4,12 @@ import Kacy from '../img/Kacy.png';
 import PriceMan from '../img/priceMan.png';
 import PriceWoman from '../img/priceWoman.png';
 import ViewLady from '../img/viewLady.png';
+import Footer from '../components/Footer';
 import styled from 'styled-components';
 
 const PastEditions = () => {
   return (
+      <div>
     <EditionStyle>
         <h2>Photo Gallery</h2>
         <h3>Our collage of photos and memories from notable events</h3>
@@ -29,6 +31,8 @@ const PastEditions = () => {
             </div>
         </div>
     </EditionStyle>
+    <Footer/>
+    </div>
   )
 }
 

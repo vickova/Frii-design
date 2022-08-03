@@ -1,10 +1,12 @@
 import React from 'react';
 import Connectedaward from '../img/connectedaward.png';
 import Connected from '../img/connected.png';
+import Footer from '../components/Footer';
 import styled from 'styled-components';
 
 const ConnectedAward = () => {
   return (
+      <div>
     <ConnectedStyle>
         <div className='connected-cover'>
             <h2>The Connected Awards</h2>
@@ -26,6 +28,8 @@ const ConnectedAward = () => {
             </div>
         </div>
     </ConnectedStyle>
+    <Footer/>
+    </div>
   )
 }
 

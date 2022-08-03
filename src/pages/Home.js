@@ -275,11 +275,7 @@ const Cards = styled.div`
     background: #1F0231;
     padding:4rem 3rem;
     margin: 5rem 0;
-    .targets{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    }
+    
     .card-cover{
         display: flex;
         justify-content: center;
@@ -287,10 +283,11 @@ const Cards = styled.div`
     }
     .card{
         border: 1px solid gray;
-        padding: 4rem;
+        padding: 1rem;
+        width: 15rem;
+        height: 15rem;
         margin: 1rem;
         color: #FFF;
-        height: 200px;
     }
     h2{
         font-size: 2.5rem;
@@ -298,7 +295,6 @@ const Cards = styled.div`
     }
     @media screen and (max-width: 685px){
         padding: 1rem;
-        .target{}
         .card-cover{
             display:grid;
             grid-template-columns: 1fr 1fr;

@@ -92,18 +92,30 @@ const NavbarStyle = styled.div`
         .navbar{
         .nav-lists{
             display:${({menu})=> menu? 'block': 'none'};
+            position: ${({menu})=> menu? 'fixed': 'static'};
+            background-color:#FFF;
             width: 100%;
+            z-index:2;
             height: 100%;
+            left:0;
+            .exit{
+                margin: 1rem;
+            }
             ul{
                 display:block;
+                padding:0;
             }
             .special-lists{
                 li:first-child, li:last-child{
                 background-color: transparent;
                 padding:0;
                 color: #000;
+                a{
+                    color:#000;
+                }
                 }
             }
+            
         }
         .menu{
             display:${({menu})=> menu? 'none': 'block'};
@@ -114,7 +126,7 @@ const NavbarStyle = styled.div`
         }
         ul{
             li{
-                border-bottom: 1px solid gray;
+                border: 1px solid gray;
             }
         }
     }

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Map from '../img/map.png'
+import Map from '../img/map.png';
+import Footer from '../components/Footer';
+
 
 const FutureEdition = () => {
     const editions = [
@@ -18,6 +20,7 @@ const FutureEdition = () => {
         },
     ]
   return (
+      <div>
     <EditionStyle>
         <h2>Future Edition</h2>
         <h3>Nominate candidates for furure edition</h3>
@@ -33,6 +36,8 @@ const FutureEdition = () => {
             })}
         </div>
     </EditionStyle>
+            <Footer/>
+    </div>
   )
 }
 
@@ -51,6 +56,7 @@ const EditionStyle = styled.div`
         justify-content: center;
         align-items: center;
         gap: 2rem;
+        margin: 3rem 0;
         .nomination{
             box-shadow:0 0 3px 2px #F5F5F5;
             border-radius: 8px;
