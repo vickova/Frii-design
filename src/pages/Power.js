@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
+import PopUp from '../components/PopUp';
+import BuyButton from '../components/BuyButton';
 
 const Power = () => {
+const [pop, setPop] = useState(false);
   return (
-    <PowerStyle>
+    <PowerStyle pop={pop}>
         <div className='power'>
             <h2>Increase your voting power</h2>
             <h3>Cheer Your Favourite Nominee to Success</h3>
+            <PopUp pop={pop} setPop={setPop}/>
             <div className='card-cover'>
                 <div className='card'>
                     <div id='one'>
@@ -16,7 +20,7 @@ const Power = () => {
                         </div>
                         <div>
                             <h3>2.50$</h3>
-                            <button>Buy</button>
+                            <BuyButton pop={pop} setPop={setPop}/>
                         </div>
                     </div>
                 </div>
@@ -28,7 +32,7 @@ const Power = () => {
                         </div>
                         <div>
                             <h3>5$</h3>
-                            <button>Buy</button>
+                            <BuyButton pop={pop} setPop={setPop}/>
                         </div>
                     </div>
                 </div>
@@ -40,7 +44,7 @@ const Power = () => {
                         </div>
                         <div>
                             <h3>7.50$</h3>
-                            <button>Buy</button>
+                            <BuyButton pop={pop} setPop={setPop}/>
                         </div>
                     </div>
                 </div>
@@ -52,7 +56,7 @@ const Power = () => {
                         </div>
                         <div>
                             <h3>10$</h3>
-                            <button>Buy</button>
+                            <BuyButton pop={pop} setPop={setPop}/>
                         </div>
                     </div>
                 </div>
@@ -67,8 +71,8 @@ const PowerStyle = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #1F0332;
-    height: 150vh;
     padding: 3rem;
+    position: relative;
     h2{
     font-size: 2.5rem;
     margin: .5rem 0;
@@ -90,6 +94,7 @@ const PowerStyle = styled.div`
             justify-content: center;
             gap: 2rem;
             height: 100%;
+            opacity:${({pop})=> pop? '0': '1'};
             .card{
                 width: 15rem;
                 display:flex;
@@ -101,12 +106,7 @@ const PowerStyle = styled.div`
                     margin:.5rem 0;
                     color: #FFF;
                 }
-                button{
-                    padding: .8rem 2rem;
-                    border: none;
-                    border-radius: 3px;
-                    margin: 1rem 0;
-                }
+                
             }
             #one, #two, #three, #four{
                 width: 100%;
@@ -140,23 +140,12 @@ const PowerStyle = styled.div`
             font-size: 1rem;
         }
         .power{
-            padding:0;
-            gap: 1rem;
-            margin: 1rem 5rem;
-            width: 100%;
+            padding: .5rem;
             .card-cover{
-                padding:1rem;
-                gap: .5rem;
+                display:block;
                 .card{
-                    h3{
-                        font-size: 1rem;
-                    }
-                    button{
-                        padding: .5rem 1rem;
-                        font-size: .8rem;
-                    }
                     #one, #two, #three, #four{
-                        padding:.5rem;
+                        height:95%;
                     }
                 }
             }

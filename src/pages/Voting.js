@@ -1,76 +1,19 @@
 import React from 'react';
-import Search from '../img/Vector (8).png';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Searching from '../components/Searching';
 
-const Voting = () => {
-    const votings= [
-        {
-            name: 'Adewale Akinola',
-            votes: 750,
-        },
-        {
-            name: 'Adewale Akinola',
-            votes: 750,
-        },
-        {
-            name: 'Adewale Akinola',
-            votes: 750,
-        },
-        {
-            name: 'Adewale Akinola',
-            votes: 750,
-        },
-        {
-            name: 'Adewale Akinola',
-            votes: 750,
-        },
-        {
-            name: 'Adewale Akinola',
-            votes: 750,
-        },
-        {
-            name: 'Adewale Akinola',
-            votes: 750,
-        },
-        {
-            name: 'Adewale Akinola',
-            votes: 750,
-        },
-        {
-            name: 'Adewale Akinola',
-            votes: 750,
-        },
-        {
-            name: 'Adewale Akinola',
-            votes: 750,
-        },
-        {
-            name: 'Adewale Akinola',
-            votes: 750,
-        },
-        {
-            name: 'Adewale Akinola',
-            votes: 750,
-        },
-    ]
+const Voting = ({votings, search, setSearch}) => {
   return (
     <VoteStyle>
         <h2>Exceptional Data Analyst</h2>
-        <SearchCover>
-            <div className='search-cover'>
-                <div className='search-cover-inner'>
-                    <input type="text" placeholder="Nominee's Name, Nominee's Category"/>
-                    <img src={Search} alt="search-icon" />
-                </div>
-                <button>Search</button>
-            </div>
-        </SearchCover>
+        <Searching votings={votings} search={search} setSearch={setSearch}/> 
         <div className='after-search'>
             <p>You have <span>70</span> votes left</p>
-            <h4>Increase your voting power <span>Here</span></h4>
+            <h4>Increase your voting power <span><Link to='/power'>Here</Link></span></h4>
         </div>
         <div className='vote-cover'>
-            {votings.map((vote, i)=>{
+            {search.map((vote, i)=>{
                 return(
                     <div key={i} className='voting-card'>
                         <div className='avatar-cover'>
@@ -82,7 +25,7 @@ const Voting = () => {
                         <p>{vote.votes} votes</p>
                         <div className='vote-box'>
                             <p><span>-</span> 1 <span>+</span></p>
-                            <button>Vote</button>
+                            <Link to='/power'><button>Vote</button></Link>
                         </div>
                     </div>
                 )
@@ -100,9 +43,15 @@ const VoteStyle = styled.div`
         span{
             color:#3E0563;
             font-weight: 700;
+            a{
+                text-decoration:none;
+            }
+        }
+        h4{
+            font-size: 1rem;
         }
         p{
-            font-size: 1rem;
+            font-size: 1.5rem;
             span{
                 font-size: 3rem;
             }
@@ -146,6 +95,7 @@ const VoteStyle = styled.div`
                     background-color: #3E0563;
                     color: #FFFF;
                     border:none;
+                    cursor:pointer;
                 }
             }
         }
@@ -174,67 +124,5 @@ const VoteStyle = styled.div`
     }
 `
 
-const SearchCover = styled.div`
-    text-align:center;
-    margin: 2rem 0;
-    .hero-text{
-        display: flex;
-        justify-content: center;
-        h2{
-            font-size: 6rem;
-            max-width: 80%;
-        }
-    }
-    .search-cover{
-        display: flex;
-        justify-content:center;
-        gap: 2rem;
-        .search-cover-inner{
-            position:relative;
-            width: 50%;
-            input{
-                height: 30px;
-                width: 100%;
-                padding: 1rem 2rem;
-                border: 1px solid gray;
-                border-radius: 4px;
-            }
-            input::placeholder{
-                margin: 0 7rem;
-                font-size: 1rem;
-            }
-            img{
-                position: absolute;
-                left:10px;
-                bottom: 20px;
-            }
-        }
-        button{
-            padding: 1rem 2rem;
-            margin: 0 .5rem;
-            background-color: #3E0563;
-            border-radius: 4px;
-            color:#FFF;
-            font-size:1.2rem;
-        }
-    }
-    h3{
-        font-size: 1.5rem;
-    }
-    @media screen and (max-width: 685px){
-        .hero-text{
-            h2{
-                font-size: 2rem;
-            }
-        }
-        .search-cover{
-            margin: 0 1rem;
-            .search-cover-inner{
-                input{
-                    width: 80%;
-                }
-            }
-        }
-    }
-`
+
 export default Voting;

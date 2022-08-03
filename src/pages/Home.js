@@ -1,5 +1,4 @@
 import React from 'react';
-import Search from '../img/Vector (8).png';
 import styled from 'styled-components';
 import Connected from '../img/connected.png';
 import PriceMan from '../img/priceMan.png';
@@ -14,26 +13,27 @@ import CurveStarS from '../img/curvestarsmall.svg';
 import Kacy from '../img/Kacy.png';
 import ViewLady from '../img/viewLady.png';
 import Ribbon from '../img/ribbon.svg';
-import RightStripe from '../img/stripes (1).svg';
+import RightStripe from '../img/stripes.svg';
 import LeftStripe from '../img/stripes.svg';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
+import Arrow from '../img/arrow.svg';
+import { Link } from 'react-router-dom';
+import Searching from '../components/Searching';
 
 
-const Home = () => {
+
+const Home = ({votings, search, setSearch}) => {
   return (
-    <div>
-        <SearchCover>
-            <div className='hero-text'><h2>First Ever Tech Personality Award For Africans in Europe</h2></div>
-            <div className='search-cover'>
-                <div className='search-cover-inner'>
-                    <input type="text" placeholder="Nominee's Name, Nominee's Category"/>
-                    <img src={Search} alt="search-icon" />
-                </div>
-                <button>Search</button>
+    <HomeStyle>
+        <div className='hero-text'><h2>first Ever Tech Personality Award For Africans In Europe</h2></div>
+        <Searching votings={votings} search={search} setSearch={setSearch}/>
+        <div className='arrowed-sec'>
+                <Link to='/votingcategories'>
+                    <h3>View all categories</h3>
+                    <img src={Arrow} alt='arrow'/>
+                </Link>
             </div>
-        </SearchCover>
-            <h3>View all categories</h3>
             <Cards>
             <h2>Our Targets</h2>
                 <div className='targets'>
@@ -73,7 +73,7 @@ const Home = () => {
                                 using Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
                                 as opposed to using 'Content here, content here', making it look like readable English.
                         </p>
-                        <Button buttonText='Learn more'/>
+                        <Button buttonText='Learn more' to='/connectedawards'/>
                     </SideFlex>
                 </div>
                 <img id='rightstripe' className='stripe' src={RightStripe} alt="rightstripes" />
@@ -82,7 +82,7 @@ const Home = () => {
                 <div className='positioned-connect'>
                     <SideFlex>
                         <div className='connected-cover'>
-                            <h2>The Connected Awards</h2>
+                            <h2>Celebrated Techies</h2>
                             <div></div>
                         </div>
                         <p>The connected is.....It is a long established fact that 
@@ -91,7 +91,7 @@ const Home = () => {
                                 using Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
                                 as opposed to using 'Content here, content here', making it look like readable English.
                         </p>
-                        <Button buttonText='Learn more'/>
+                        <Button buttonText='Learn more' to='/celebratedtechies'/>
                     </SideFlex>
                     <div className='image-cover'>
                         <img src={PriceMan} alt="connected" />
@@ -126,11 +126,11 @@ const Home = () => {
             </div>
         </CardsStyle>
         <Footer/>
-    </div>
+    </HomeStyle>
   )
 }
 
-const SearchCover = styled.div`
+const HomeStyle = styled.div`
     text-align:center;
     .hero-text{
         display: flex;
@@ -140,54 +140,29 @@ const SearchCover = styled.div`
             max-width: 80%;
         }
     }
-    .search-cover{
+    .arrowed-sec{
+        a{
+        text-decoration:none;
         display: flex;
-        justify-content:center;
-        gap: 2rem;
-        .search-cover-inner{
-            position:relative;
-            width: 50%;
-            input{
-                height: 30px;
-                width: 100%;
-                padding: 1rem 2rem;
-                border: 1px solid gray;
-                border-radius: 4px;
-            }
-            input::placeholder{
-                margin: 0 7rem;
-                font-size: 1rem;
-            }
-            img{
-                position: absolute;
-                left:10px;
-                bottom: 20px;
-            }
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        h3{
+            font-size: 1.5rem;
+            color: #000;
         }
-        button{
-            padding: 1rem 2rem;
-            margin: 0 .5rem;
-            background-color: #3E0563;
-            border-radius: 4px;
-            color:#FFF;
-            font-size:1.2rem;
+        img{
+            cursor: pointer;
+        }
+        img:hover{
+            scale: 2;
         }
     }
-    h3{
-        font-size: 1.5rem;
     }
     @media screen and (max-width: 685px){
         .hero-text{
             h2{
                 font-size: 2rem;
-            }
-        }
-        .search-cover{
-            margin: 0 1rem;
-            .search-cover-inner{
-                input{
-                    width: 80%;
-                }
             }
         }
     }
@@ -210,6 +185,7 @@ const ConnectedStyle = styled.div`
         position: absolute;
         right:0;
         bottom:-100px;
+        overflow:hidden;
     }
     @media screen and (max-width: 685px) {
         .positioned-connect{
@@ -221,13 +197,15 @@ const ConnectedStyle = styled.div`
         }
         
         #rightstripe{
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
+            margin: 2rem 0;
         }
     }
 `
 const ConnectedStyleSecond = styled(ConnectedStyle)`
     position: relative;
+    margin: 2rem 0;
     .positioned-connect{
         display: flex;
         justify-content: space-between;
@@ -247,16 +225,19 @@ const ConnectedStyleSecond = styled(ConnectedStyle)`
         left:0;
         bottom:-100px;
         transform:rotate(90deg);
+        overflow:hidden;
     }
     @media screen and (max-width: 685px) {
         .positioned-connect{
             display: flex;
             flex-direction: column-reverse;
             margin: 6rem 1.5rem;
+            margin-bottom: 8rem;
         }
         #leftstripe{
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
+            margin: 2rem 0;
         }
     }
 `
@@ -297,16 +278,16 @@ const Cards = styled.div`
     .targets{
     display:flex;
     align-items:center;
+    justify-content:center;
     }
     .card-cover{
-        width:100%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
     .card{
         border: 1px solid gray;
-        padding: 5rem;
+        padding: 4rem;
         margin: 1rem;
         color: #FFF;
         height: 200px;
@@ -317,11 +298,11 @@ const Cards = styled.div`
     }
     @media screen and (max-width: 685px){
         padding: 1rem;
+        .target{}
         .card-cover{
             display:grid;
             grid-template-columns: 1fr 1fr;
             height: fit-content;
-            width:100%;
             .card{
                 padding:.5rem;
                 margin:.5rem;
@@ -341,6 +322,14 @@ const Cards = styled.div`
             font-size: 2rem;
         }
     }
+    @media screen and (max-width: 360px){
+        .card-cover{
+            .card{
+                width: 100px;
+                height: 100px;
+            }
+        }
+    }
 `
 const CardsStyle = styled.div`
     background-color:#FFF;
@@ -354,7 +343,7 @@ const CardsStyle = styled.div`
         padding: 3rem;
         margin: 1rem;
         color: #FFF;
-        height: 330px;
+        height: 400px;
         
         h3{
             color: #3E0563;

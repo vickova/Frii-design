@@ -1,10 +1,12 @@
 import React from 'react';
 import Square from '../img/squares.png';
 import Arrow from '../img/arrow.svg';
-import Search from '../img/Vector (8).png';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import Searching from '../components/Searching';
 
-const VotingCategories = () => {
+
+const VotingCategories = ({votings, search, setSearch}) => {
     const celebs= [
         {
             description: 'Exceptional Data Analyst'
@@ -58,15 +60,7 @@ const VotingCategories = () => {
   return (
     <VotingStyle>
         <h2>Voting Categories</h2>
-        <SearchCover>
-            <div className='search-cover'>
-                <div className='search-cover-inner'>
-                    <input type="text" placeholder="Nominee's Name, Nominee's Category"/>
-                    <img src={Search} alt="search-icon" />
-                </div>
-                <button>Search</button>
-            </div>
-        </SearchCover>
+        <Searching votings={votings} search={search} setSearch={setSearch}/>
         <div className='voting-categ'>
             {celebs.map((celeb, i)=>{
                 return(
@@ -74,7 +68,7 @@ const VotingCategories = () => {
                         <img src={Square} alt="square-pic" />
                         <h3>{celeb.description}</h3>
                         <div className='arrowed'>
-                        <img src={Arrow} alt="arrow" />
+                        <Link to='/votingcategories/voting'><img src={Arrow} alt="arrow" /></Link>
                         </div>
                     </div>
                 )
@@ -85,6 +79,9 @@ const VotingCategories = () => {
 }
 
 const VotingStyle = styled.div`
+    h2{
+        font-size: 2.5rem;
+    }
     .voting-categ{
         display:grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -119,69 +116,6 @@ const VotingStyle = styled.div`
             padding:0;
             .voting-card{
                 margin: .5rem;
-            }
-        }
-    }
-`
-const SearchCover = styled.div`
-    text-align:center;
-    margin: 2rem 0;
-    .hero-text{
-        display: flex;
-        justify-content: center;
-        h2{
-            font-size: 6rem;
-            max-width: 80%;
-        }
-    }
-    .search-cover{
-        display: flex;
-        justify-content:center;
-        gap: 2rem;
-        .search-cover-inner{
-            position:relative;
-            width: 50%;
-            input{
-                height: 30px;
-                width: 100%;
-                padding: 1rem 2rem;
-                border: 1px solid gray;
-                border-radius: 4px;
-            }
-            input::placeholder{
-                margin: 0 7rem;
-                font-size: 1rem;
-            }
-            img{
-                position: absolute;
-                left:10px;
-                bottom: 20px;
-            }
-        }
-        button{
-            padding: 1rem 2rem;
-            margin: 0 .5rem;
-            background-color: #3E0563;
-            border-radius: 4px;
-            color:#FFF;
-            font-size:1.2rem;
-        }
-    }
-    h3{
-        font-size: 1.5rem;
-    }
-    @media screen and (max-width: 685px){
-        .hero-text{
-            h2{
-                font-size: 2rem;
-            }
-        }
-        .search-cover{
-            margin: 0 1rem;
-            .search-cover-inner{
-                input{
-                    width: 80%;
-                }
             }
         }
     }

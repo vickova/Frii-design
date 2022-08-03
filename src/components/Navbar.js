@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Menu from '../img/menu.svg';
 import Logo from '../img/logo.svg';
 import Close from '../img/close.svg';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [menu, setMenu] = useState(false);
@@ -16,15 +17,15 @@ const Navbar = () => {
             <div className='nav-lists'>
                 <img className='exit' src={Close} alt="exit" onClick={()=> setMenu(!menu)}/>
                 <ul>
-                    <li>Categories</li>
-                    <li>Past editions</li>
-                    <li>Future editions</li>
-                    <li>About us</li>
-                    <li>Make a donation</li>
+                    <li><Link to='/votingcategories'>Categories</Link></li>
+                    <li><Link to='/pasteditions'>Past editions</Link></li>
+                    <li><Link to='/futureedition'>Future editions</Link></li>
+                    <li><Link to='/connectedawards'>About us</Link></li>
+                    <li><Link to='/donate'>Make a donation</Link></li>
                 </ul>
                 <ul className='special-lists'>
-                    <li>Log In</li>
-                    <li>Create Account</li>
+                    <li><Link to='/login'>Log In</Link></li>
+                    <li><Link to='/signup'>Create Account</Link></li>
                 </ul>
             </div>
         </div>
@@ -51,9 +52,13 @@ const NavbarStyle = styled.div`
             text-decoration: none;
             margin:.5rem 1rem;
             list-style:none;
-            font-size: 1.2rem;
             padding: .5rem;
             margin: .8rem;
+            a{
+                text-decoration:none;
+                font-size: 1.2rem;
+                color: #272626;
+            }
         }
     }
     .navbar{
@@ -76,8 +81,10 @@ const NavbarStyle = styled.div`
             li:last-child{
                 background-color: #3E0563;
                 padding: .5rem 1rem;
-                color:#FFF;
                 border-radius: 4px;
+                a{
+                    color: #FFF;
+                }
             }
         }
     }

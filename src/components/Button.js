@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const Button = ({buttonText}) => {
+
+const Button = ({buttonText, to}) => {
   return (
     <ButtonStyle>
-        <button>{buttonText}</button>
+        <Link to={to}><button>{buttonText}</button></Link>
     </ButtonStyle>
   )
 }
@@ -18,6 +20,7 @@ const ButtonStyle = styled.div`
           color:#FFF;
           font-size:1.2rem;
           border: none;
+          cursor:pointer;
       }
       @media screen and (max-width: 685px){
         button{
