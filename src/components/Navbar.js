@@ -5,7 +5,7 @@ import Logo from '../img/logo.svg';
 import Close from '../img/close.svg';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({isLoggedIn, LogIn, LogOut}) => {
     const [menu, setMenu] = useState(false);
   return (
     <NavbarStyle menu={menu}>
@@ -24,7 +24,10 @@ const Navbar = () => {
                     <li><Link to='/donate'>Make a donation</Link></li>
                 </ul>
                 <ul className='special-lists'>
-                    <li><Link to='/login'>Log In</Link></li>
+                    {
+                    isLoggedIn?
+                    (<li onClick={LogOut}><Link to='/'>Log Out</Link></li>):(<li><Link to='/login'>Log In</Link></li>)
+                    }
                     <li><Link to='/signup'>Create Account</Link></li>
                 </ul>
             </div>

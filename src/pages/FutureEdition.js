@@ -36,7 +36,7 @@ const FutureEdition = () => {
             })}
         </div>
     </EditionStyle>
-            <Footer/>
+        <Footer/>
     </div>
   )
 }

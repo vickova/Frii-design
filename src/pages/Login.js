@@ -1,9 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Google from '../img/google.svg';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({setisLogged, isLoggedIn}) => {
+const [emailed, setEmailed] = useState('');
+const [password, setPassword] = useState('')
+const EmailedHandler = (e)=>{
+    setEmailed(e.target.value);
+}
+const PasswordHandler = (e)=>{
+    setPassword(e.target.value);
+}
+const LogInDetails = [
+    {
+        email:'olumideronke@gmail.com',
+        password:'1234',
+        Firstname:'Victoria',
+        LastName:'Olumide',
+        phoneNumber:'09051383107',
+
+    }
+]
+const LoginHandler = (e)=>{
+    e.preventDefault();
+    LogInDetails.forEach((values)=>{
+        if(values.email === emailed && values.password === password){
+            setisLogged(true);
+            console.log('Successful')
+        }
+        else{
+        console.log('Unsuccessful')
+        }
+    })
+}
   return (
     <LoginStyle>
         <div className='signup-cover'>
@@ -19,12 +49,12 @@ const Login = () => {
                 <div id='or'><span></span> <p> OR </p> <span></span></div>
                 
                 <label htmlFor="emal">Email Address
-                    <input type="email" name='email' id='email'/>
+                    <input type="email" name='email' id='email' value={emailed} onChange={EmailedHandler}/>
                 </label>
                 <label htmlFor="password">Password
-                    <input type="password" name='password' id='password'/>
+                    <input type="password" name='password' id='password' value={password} onChange={PasswordHandler}/>
                 </label>
-                <button id='color-but'><Link to='/'>Create my account</Link></button>
+                <button id='color-but' onClick={LoginHandler}><Link to={isLoggedIn?'/votingcategories':'/login'}>Log In</Link></button>
             </form>
             <p id='forgot'>Forgot Password</p>
         </div>
@@ -118,8 +148,11 @@ const LoginStyle = styled.div`
         #color-but{
             background-color: #3E0563;
             border:none;
+            padding:0;
             a{
                 color: #FFF;
+                padding:1.5rem;
+                width:100%;
             }
         }
         #or{
